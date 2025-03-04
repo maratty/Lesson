@@ -1,24 +1,26 @@
-package lesson3;
+package lesson6;
 
-public class Circle implements Shape {
-    double radius;
+public class Rectangle implements Shape {
+    double length;
+    double width;
     String colS;
     String colP;
 
-    public Circle(double radius, String colS, String colP) {
-        this.radius = radius;
+    public Rectangle(double length, double width, String colS, String colP) {
+        this.length = length;
+        this.width = width;
         this.colS = colS;
         this.colP = colP;
     }
 
     @Override
     public double calculateArea() {
-        return Math.PI * radius * radius;
+        return length * width;
     }
 
     @Override
     public double calculatePerimeter() {
-        return 2 * Math.PI * radius;
+        return 2 * (length + width);
     }
     @Override
     public String colorS() {
