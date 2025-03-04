@@ -1,6 +1,4 @@
-package com.lesson;
-
-import java.util.Arrays;
+package lesson;
 
 class Product {
     String name;
