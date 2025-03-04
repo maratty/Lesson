@@ -1,4 +1,4 @@
-package lesson3;
+package lesson6;
 
 public class MainAnimal {
     public static void main(String[] args) {
