@@ -1,4 +1,4 @@
-package lesson;
+package lesson2;
 
 class Tovar {
     String name, made, country, booking;

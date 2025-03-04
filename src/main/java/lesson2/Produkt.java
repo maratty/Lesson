@@ -1,4 +1,4 @@
-package lesson;
+package lesson2;
 
 class Product {
     String name;
