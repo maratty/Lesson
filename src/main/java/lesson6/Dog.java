@@ -1,10 +1,10 @@
 package lesson6;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
     String name;
     static int countDod = 0; // делаем статичным, чтобы изменения сохранялись при сложении
 
-    Dog(String name){
+    Dog(String name) {
         super(); // конструктор родительского класса
         countDod++; // складывает переменную +1
         this.name = name;
@@ -27,7 +27,7 @@ public class Dog extends Animal{
         }
     }
 
-    static int getCountDod (){
+    static int getCountDod() {
         return countDod;
     }
 }

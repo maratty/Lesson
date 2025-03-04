@@ -22,8 +22,8 @@ public class MainAnimal {
         batmen.may(15);
 
         System.out.println("Общее колиество животных: " + Animal.getCountAnimal());
-        System.out.println("Общее количество котов: "+ Cat.getCountCat());
-        System.out.println("Общее количество собак: "+ Dog.getCountDod());
+        System.out.println("Общее количество котов: " + Cat.getCountCat());
+        System.out.println("Общее количество собак: " + Dog.getCountDod());
 
     }
 }
