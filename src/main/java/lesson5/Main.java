@@ -13,7 +13,8 @@ class Park {
         String priceIn = "стоимость:";
     }
 }
-public class Main{
+
+public class Main {
 
     public static void main(String[] args) {
         Park myOuter = new Park();
