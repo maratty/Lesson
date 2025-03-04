@@ -1,4 +1,4 @@
-package lesson2;
+package lesson5;
 
 class Park {
     String name = "Карусель";

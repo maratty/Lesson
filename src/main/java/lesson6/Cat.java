@@ -1,11 +1,11 @@
-package lesson3;
+package lesson6;
 
-public class Cat extends Animal{
+public class Cat extends Animal {
     String name;
     static int countCat = 0;
 
 
-    Cat(String name){
+    Cat(String name) {
         super();
         countCat++;
         this.name = name;
@@ -27,15 +27,14 @@ public class Cat extends Animal{
     void may(int eda) {
         if (eda > 10) {
             System.out.println(name + " покушал, наелся, теперь пора спать");
-        }
-        else if(eda<0){
+        } else if (eda < 0) {
             System.out.println(name + " не может сьесть отрицательную еду");
-        }
-        else {
-            System.out.println("Вы положили недостаточно еды, положите больше 10, иначе " + name+ " останеться голодным");
+        } else {
+            System.out.println("Вы положили недостаточно еды, положите больше 10, иначе " + name + " останеться голодным");
         }
     }
-    static int getCountCat(){
+
+    static int getCountCat() {
         return countCat;
     }
 

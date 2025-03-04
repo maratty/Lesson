@@ -1,4 +1,4 @@
-package lesson3;
+package lesson6;
 
 public interface Shape {
     double calculateArea();
