@@ -13,15 +13,4 @@ class Tovar {
         this.booking = booking; // состояние бронирования покупателем
     }
 
-    public static void main(String[] args) {
-
-        Tovar telefon = new Tovar("телефон", 2024, "nokia", "Китай", 1000, "забронировано");
-
-        System.out.println("Наименование товара:" +telefon.name + "\n" +
-                "Дата производства:" + telefon.date + "\n" +
-                "Производитель:" + telefon.made + "\n" +
-                "Страна происхождения:" + telefon.country + "\n" +
-                "Цена:" + telefon.price + "\n" +
-                "Состояние бронирования покупателе:" + telefon.booking);
-    }
 }
