@@ -5,8 +5,8 @@ public class Triangle implements Shape {
     double a;
     double b;
     double c;
-    String colS;
-    String colP;
+    String colS; // цвет фона
+    String colP; // цвет границ
 
     public Triangle(double h, double a, double b, double c, String colS, String colP) {
         this.h = h;
@@ -17,22 +17,18 @@ public class Triangle implements Shape {
         this.colP = colP;
     }
 
-    @Override
     public double calculateArea() {
         return (h * b) / 2;
     }
 
-    @Override
     public double calculatePerimeter() {
         return a + b + c;
     }
 
-    @Override
     public String colorS() {
         return colS;
     }
 
-    @Override
     public String colorP() {
         return colP;
     }

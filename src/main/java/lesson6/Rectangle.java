@@ -13,21 +13,18 @@ public class Rectangle implements Shape {
         this.colP = colP;
     }
 
-    @Override
     public double calculateArea() {
         return length * width;
     }
 
-    @Override
     public double calculatePerimeter() {
         return 2 * (length + width);
     }
-    @Override
+
     public String colorS() {
         return colS;
     }
 
-    @Override
     public String colorP() {
         return colP;
     }
