@@ -1,28 +1,28 @@
 package lesson_12_testng;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import programms.Bolshe;
+
+
 @Test
 public class BolsheTest {
+    // Создаем экземпляр класса
+    Bolshe bolshe = new Bolshe();
 
+    @Test
+    public void testComparison() {
+        // Проверка a > b
+        Assert.assertTrue(bolshe.aBolsheB(5, 3), "5 должно быть больше 3");
+        Assert.assertFalse(bolshe.aBolsheB(2, 4), "2 не должно быть больше 4");
 
-    public void someTest() {
+        // Проверка a < b
+        Assert.assertTrue(bolshe.bBolsheA(2, 4), "2 должно быть меньше 4");
+        Assert.assertFalse(bolshe.bBolsheA(5, 3), "5 не должно быть меньше 3");
 
-        System.out.println("Сравниваем два целых числа");
-
-        int a = 5;
-        int b = 7;
-
-        if (a > b) {
-            System.out.println("a больше b");
-        } else if (a < b) {
-            System.out.println("b больше a");
-        } else {
-            System.out.println("a и b равны");
-        }
-        Assert.assertEquals(b > a, true);
-
-
+        // Проверка a == b
+        Assert.assertTrue(bolshe.aRavnoB(3, 3), "3 должно быть равно 3");
+        Assert.assertFalse(bolshe.aRavnoB(2, 3), "2 не должно быть равно 3");
     }
-
-
 }
+

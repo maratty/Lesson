@@ -4,23 +4,33 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+import programms.Triangle;
 
 @Test
 public class TriangleTest {
-    double a = 14;
-    double b = 12;
-    double c = 12;
 
-    public void getAreaTest() {
-        double p = (a + b + c) / 2;
-        Assert.assertEquals((a + b + c) / 2, 19);
-        double s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-        Assert.assertEquals(Math.sqrt(p * (p - a) * (p - b) * (p - c)), 68.22756041366274);
-        System.out.println(s);
+    // Создаем экземпляр класса
+    Triangle triangle = new Triangle();
 
+    @Test
+    public void testCalculateArea() {
+        Assert.assertEquals(triangle.calculateArea(10, 5), 25.0, "Площадь треугольника с основанием 10 и высотой 5 должна быть 25.0");
+        Assert.assertEquals(triangle.calculateArea(0, 5), 0.0, "Площадь треугольника с основанием 0 и высотой 5 должна быть 0.0");
+        Assert.assertEquals(triangle.calculateArea(10, 0), 0.0, "Площадь треугольника с основанием 10 и высотой 0 должна быть 0.0");
+        Assert.assertEquals(triangle.calculateArea(3, 4), 6.0, "Площадь треугольника с основанием 3 и высотой 4 должна быть 6.0");
+    }
 
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testCalculateAreaWithNegativeBase() {
+        triangle.calculateArea(-1, 5); // Ожидаем исключение
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testCalculateAreaWithNegativeHeight() {
+        triangle.calculateArea(10, -5); // Ожидаем исключение
     }
 }
+
 
 
 
