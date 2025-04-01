@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    class PaymentSystemLogosTest {
+    class LogoTest {
 
     private WebDriver driver;
 
@@ -24,11 +24,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
     }
 
     @Test
-    public void testPaymentSystemLogos() {
+    public void Logo() {
 
         driver.get("https://www.mts.by");
 
-        // Список логотипов платёжных систем (замените на ваши селекторы)
+        // Список логотипов платёжных систем
         String[] logos = {
                 "img[alt='Visa']",
                 "img[alt='MasterCard']",
@@ -39,8 +39,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
         for (String logo : logos) {
             List<WebElement> elements = driver.findElements(By.cssSelector(logo));
-            // Проверяем, что хотя бы один элемент найден
-            assertTrue(elements.size() > 0, "Логотип не найден: " + logo);
+            // Проверяем
+            assertTrue(elements.size() == 5, "Логотип не найден: " + logo);
         }
     }
 
