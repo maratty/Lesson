@@ -1,55 +1,47 @@
 package lesson_14;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FormaTest {
+class FormaTest {
+    private WebDriver driver;
+
+    @BeforeEach
+    public void setUp() {
+
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
 
     @Test
-    public void form() {
-        // Создаем экземпляр драйвера
-        WebDriver driver = new ChromeDriver();
-
-        // Открываем нужный URL
+    public void testContinueButton() {
+        // Открыть веб-страницу
         driver.get("https://www.mts.by");
 
-        // Создаем экземпляр WebDriverWait
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // Находим по селектору и вводим значения
+        WebElement inputField1 = driver.findElement(By.cssSelector("#connection-phone"));
+        WebElement inputField2 = driver.findElement(By.cssSelector("#connection-sum"));
 
-        // Находим элемент селекта
-        WebElement selectElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("pay-section")));   // Создаем объект Select
-        Select select = new Select(selectElement);
-        // Выбор по видимому тексту
-        select.selectByVisibleText("Услуги связи");
+        inputField1.sendKeys("297777777");
+        inputField2.sendKeys("100");
 
-        //Заполняем поля
-        WebElement numberField = driver.findElement(By.id("Номер телефона"));
-        numberField.sendKeys("297777777");
-
-        WebElement summaField = driver.findElement(By.id("Сумма"));
-        summaField.sendKeys("100");
-
-        WebElement emailField = driver.findElement(By.id("E-mail для отправки чека "));
-        emailField.sendKeys("marraty@mail.ru");
-
-        // Ожидаем, пока кнопка "Продолжить" не станет кликабельной
-        WebElement continueButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("Продолжить")));
-
-        // Нажимаем на кнопку "Продолжить"
+        // Нажать кнопку "Продолжить"
+        WebElement continueButton = driver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button"));
         continueButton.click();
+    }
 
-
-
-
-        driver.quit();
+    @AfterEach
+    public void tearDown() {
+        // Закрытие драйвера после завершения теста
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
-

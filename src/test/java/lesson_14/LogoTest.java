@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    class LogoTest {
+class LogoTest {
 
     private WebDriver driver;
 
