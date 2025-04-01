@@ -16,14 +16,15 @@ public class BlockTest {
         // Открытие веб-страницы
         driver.get("https://www.mts.by");
 
-        // Поиск элемента по ID
-        WebElement element = driver.findElement(By.id("pay-section"));
+        // Поиск элемента
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2"));
 
         // Получение текста элемента
         String actualTitle = element.getText();
 
         // Ожидаемое значение
-        String expectedTitle = "Онлайн пополнение без комиссии";
+        String expectedTitle = "Онлайн пополнение\n" +
+                "без комиссии";
 
         // Проверка названия блока
         if (actualTitle.equals(expectedTitle)) {

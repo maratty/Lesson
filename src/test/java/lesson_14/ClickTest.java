@@ -1,67 +1,52 @@
 package lesson_14;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import static com.ibm.cuda.CudaError.Assert;
+import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ClickTest {
+class ClickTest {
+
+    private WebDriver driver;
+
+    @BeforeEach
+    public void setUp() {
+
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
 
     @Test
-    public void click() {
-        // Создаем экземпляр драйвера
-        WebDriver driver = new ChromeDriver();
+    public void testService() {
+        // Открываем страницу
+        driver.get("https://www.mts.by");
 
-        try {
-            // Открываем нужный URL
-            driver.get("https://www.mts.by");
+        // Находим ссылку «Подробнее о сервисе»
+        WebElement service = driver.findElement(By.linkText("Подробнее о сервисе"));
 
-            // Находим элемент ссылки
-            WebElement link = driver.findElement(By.linkText("Подробнее о сервисе"));
+        // Проверяем, что ссылка отображается
+        assertTrue(service.isDisplayed(), "Ссылка 'Подробнее о сервисе' не отображается.");
 
-            // Получаем URL ссылки
-            String url = link.getAttribute("href");
-            System.out.println("Проверяем ссылку: " + url);
+        // Получаем URL ссылки
+        String linkUrl = service.getAttribute("href");
 
-            // Проверяем, что ссылка работает
-            if (isLinkWorking(url)) {
-                System.out.println("Ссылка работает: " + url);
-            } else {
-                System.out.println("Ссылка не работает: " + url);
-            }
+        // Кликаем на ссылку
+        service.click();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // Закрываем драйвер
+        // Проверяем, что мы попали на ожидаемую страницу
+        String expectedUrl = "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/";
+        assertEquals(expectedUrl, driver.getCurrentUrl(), "URL не совпадает с ожидаемым.");
+
+    }
+
+    @AfterEach
+    public void tearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }
-    @Test
-    // Метод для проверки работы ссылки
-    public static boolean isLinkWorking(String linkUrl) {
-        try {
-            URL url = new URL(linkUrl);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("HEAD");
-            httpURLConnection.connect();
-            int responseCode = httpURLConnection.getResponseCode();
-            return (responseCode >= 200 && responseCode < 400); // Успешный код ответа
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-
 }
-

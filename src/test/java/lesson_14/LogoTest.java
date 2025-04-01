@@ -1,5 +1,7 @@
 package lesson_14;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,44 +10,44 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LogoTest {
+    class PaymentSystemLogosTest {
+
+    private WebDriver driver;
+
+    @BeforeEach
+    public void setUp() {
+
+        driver = new ChromeDriver();
+
+    }
 
     @Test
-    public void logo() {
-        // Создаем экземпляр драйвера
-        WebDriver driver = new ChromeDriver();
+    public void testPaymentSystemLogos() {
 
-                try {
-                    // Открываем нужный URL
-                    driver.get("https://www.mts.by");
+        driver.get("https://www.mts.by");
 
-                    // Находим блок, в котором нужно проверить наличие логотипов
-                    WebElement logoBlock = driver.findElement(By.id("pay-section")); // Замените на ваш селектор
+        // Список логотипов платёжных систем (замените на ваши селекторы)
+        String[] logos = {
+                "img[alt='Visa']",
+                "img[alt='MasterCard']",
+                "img[alt='Verified By Visa']",
+                "img[alt='MasterCard Secure Code']",
+                "img[alt='Белкарт']",
+        };
 
-                    // Находим все элементы изображений внутри указанного блока
-                    List<WebElement> logos = logoBlock.findElements(By.tagName("img"));
-
-                    // Перебираем найденные элементы и проверяем наличие логотипов
-                    boolean logoFound = false;
-                    for (WebElement logo : logos) {
-                        String src = logo.getAttribute("src");
-                        // добавляем условия для проверки, является ли изображение логотипом
-                        if (src.contains("logo") || src.contains("Логотип")) {
-                            System.out.println("Логотип найден: " + src);
-                            logoFound = true;
-                        }
-                    }
-
-                    if (!logoFound) {
-                        System.out.println("Логотипы не найдены в указанном блоке.");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    // Закрываем драйвер
-                    driver.quit();
-                }
-            }
+        for (String logo : logos) {
+            List<WebElement> elements = driver.findElements(By.cssSelector(logo));
+            // Проверяем, что хотя бы один элемент найден
+            assertTrue(elements.size() > 0, "Логотип не найден: " + logo);
         }
+    }
 
+    @AfterEach
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
