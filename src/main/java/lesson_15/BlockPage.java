@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 
@@ -15,7 +16,7 @@ public class BlockPage {
     // Локатор для заголовка блока
     private By blockTitle = By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2");
 
-    // XPath для логотипов
+    // Локаторы для логотипов
     private By visaLogo = By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[1]/img");
     private By verifiedByVisa = By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[2]/img");
     private By masterCard = By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[3]/img");
@@ -35,6 +36,7 @@ public class BlockPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
+
     //метод открытия страницы сайта
     public void open() {
         driver.get("https://www.mts.by");
@@ -46,7 +48,7 @@ public class BlockPage {
         return titleElement.getText();
     }
 
-    // Методы для логотипов
+    // Методы проверки логотипов
     public boolean visaLogo() {
         try {
             WebElement logo = driver.findElement(visaLogo);
@@ -55,6 +57,7 @@ public class BlockPage {
             return true; // Логотип не найден
         }
     }
+
     public boolean verifiedByVisa() {
         try {
             WebElement logo = driver.findElement(verifiedByVisa);
@@ -63,6 +66,7 @@ public class BlockPage {
             return true; // Логотип не найден
         }
     }
+
     public boolean masterCard() {
         try {
             WebElement logo = driver.findElement(masterCard);
@@ -71,6 +75,7 @@ public class BlockPage {
             return true; // Логотип не найден
         }
     }
+
     public boolean masterCardSecureCode() {
         try {
             WebElement logo = driver.findElement(masterCardSecureCode);
@@ -79,12 +84,13 @@ public class BlockPage {
             return true; // Логотип не найден
         }
     }
+
     public boolean belkart() {
         try {
             WebElement logo = driver.findElement(belkart);
             return logo.isDisplayed(); // Проверяем, отображается ли логотип
         } catch (Exception e) {
-            return true; // Логотип не найден
+            return true;
         }
     }
 
@@ -97,27 +103,18 @@ public class BlockPage {
             return null; // Ссылка не найдена, возвращаем null
         }
     }
-
-    public String getLinkHref() {
-        try {
-            WebElement linkElement = driver.findElement(moreInfoLink);
-            return linkElement.getAttribute("href"); // Получаем значение атрибута href
-        } catch (NoSuchElementException e) {
-            return null; // Ссылка не найдена, возвращаем null
-        }
-    }
-
+    // Кликаем по ссылке
     public void clickLink() {
         try {
             WebElement linkElement = driver.findElement(moreInfoLink);
-            linkElement.click(); // Кликаем по ссылке
+            linkElement.click();
         } catch (NoSuchElementException e) {
             throw new RuntimeException("Ссылка не найдена для клика");
         }
     }
-
+    // Получаем текущий URL страницы
     public String getCurrentUrl() {
-        return driver.getCurrentUrl(); // Получаем текущий URL страницы
+        return driver.getCurrentUrl();
     }
 
     // Метод для заполнения пустых полей Услуги связи
@@ -140,7 +137,4 @@ public class BlockPage {
 
         return true;
     }
-
-
-
 }

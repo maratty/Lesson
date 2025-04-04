@@ -35,19 +35,15 @@ public class FormPage {
     By labelField11 = By.xpath("//*[@id=\"arrears-sum\"]");
     By labelField12 = By.xpath("//*[@id=\"arrears-email\"]");
 
-
-
     //Конструктор
     public FormPage(WebDriver driver) {
         this.driver = driver;
-
     }
 
     // Метод открыть страницу сайта
     public void open() {
         driver.get("https://www.mts.by");
     }
-
 
     // Метод для выбора Услуги связи из выпадающего списка
     public void selectUslugiSvasi() {
@@ -59,6 +55,7 @@ public class FormPage {
         WebElement optionElement = driver.findElement(dropdownOption1);
         optionElement.click();
     }
+
     // Метод для выбора Домашний интернет из выпадающего списка
     public void selectDomInet() {
         // Кликаем на выпадающий список
@@ -69,6 +66,7 @@ public class FormPage {
         WebElement optionElement = driver.findElement(dropdownOption2);
         optionElement.click();
     }
+
     // Метод для выбора Рассрочка из выпадающего списка
     public void selectRassro4ka() {
         // Кликаем на выпадающий список
@@ -79,6 +77,7 @@ public class FormPage {
         WebElement optionElement = driver.findElement(dropdownOption3);
         optionElement.click();
     }
+
     // Метод для выбора Задолженность из выпадающего списка
     public void selectZadolzenost() {
         // Кликаем на выпадающий список
@@ -89,6 +88,7 @@ public class FormPage {
         WebElement optionElement = driver.findElement(dropdownOption4);
         optionElement.click();
     }
+
     // Метод для проверки полей (надписи)
     public String getLabelText(By label) {
         try {

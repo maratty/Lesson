@@ -2,8 +2,6 @@ package lesson_15;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,6 +20,7 @@ public class BlockTest extends BaseTest {
         String actualTitle = blockPage.getBlockTitle();
 
         assertEquals(expectedTitle, actualTitle);
+
     }
 
     //2. Проверить наличие логотипов платёжных систем;
