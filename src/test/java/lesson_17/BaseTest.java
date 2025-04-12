@@ -24,11 +24,11 @@ class BaseTest {
                 .queryParam("foo1", param1)
                 .queryParam("foo2", param2)
                 .when()
-                .get("/get")
+                .get("/get")//метод
                 .then()
                 .statusCode(200) // Проверяем код ответа
-                .body("args.foo1", equalTo(param1)) // Проверяем значение первого параметра
-                .body("args.foo2", equalTo(param2)); // Проверяем значение второго параметра
+                .body("args.foo1", equalTo(param1)) // Проверяем тело ответа
+                .body("args.foo2", equalTo(param2));
     }
 
     @Test
@@ -36,7 +36,7 @@ class BaseTest {
         // Устанавливаем базовый URI
         RestAssured.baseURI = "https://postman-echo.com";
 
-        // Данные для запроса
+        // Параметры запроса
         String raw = "This is expected to be sent back as part of response body.";
 
         // Выполнение POST-запроса и проверка ответа
@@ -44,10 +44,10 @@ class BaseTest {
                 .contentType(ContentType.TEXT) // Указание типа контента
                 .body(raw) // Отправка тела запроса
                 .when()
-                .post("/post") // URL для запроса
+                .post("/post") // метод
                 .then()
-                .statusCode(200) // Проверка кода ответа
-                .body("data", equalTo(raw)); // Проверка тела ответа
+                .statusCode(200) // Проверяем код ответа
+                .body("data", equalTo(raw)); // Проверяем тело ответа
 
     }
 
@@ -63,8 +63,8 @@ class BaseTest {
                 .when()
                 .post("/post")
                 .then()
-                .statusCode(200)
-                .body("data", equalTo("foo=bar"));
+                .statusCode(200) // Проверяем код ответа
+                .body("data", equalTo("foo=bar")); // Проверяем тело ответа
 
     }
 
@@ -81,7 +81,7 @@ class BaseTest {
                 .header("Content-Type", "application/json")
                 .body(requestBody)
                 .when()
-                .put("/put")
+                .put("/put") // метод put
                 .then()
                 .extract().response();
 
@@ -107,7 +107,7 @@ class BaseTest {
                 .contentType(ContentType.JSON) // Указываем, что отправляем JSON
                 .body(requestBody)
                 .when()
-                .patch("/patch")
+                .patch("/patch") // метод patch
                 .then()
                 .statusCode(200) // Проверяем код ответа
                 .body("json.key", equalTo("value")); // Проверяем тело ответа
