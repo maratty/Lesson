@@ -1,7 +1,11 @@
 package lesson_15;
 
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,6 +18,11 @@ public class BlockTest extends BaseTest {
 
         BlockPage blockPage = new BlockPage(driver);
         blockPage.open();
+
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
+
 
         String expectedTitle = "Онлайн пополнение\n" +
                 "без комиссии";
@@ -29,6 +38,10 @@ public class BlockTest extends BaseTest {
         BlockPage blockPage = new BlockPage(driver);
         blockPage.open();
 
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
+
         assertTrue(blockPage.visaLogo(), "Visa");
         assertTrue(blockPage.verifiedByVisa(), "Verified By Visa");
         assertTrue(blockPage.masterCard(), "MasterCard");
@@ -41,6 +54,10 @@ public class BlockTest extends BaseTest {
     public void testServiceLink() {
         BlockPage blockPage = new BlockPage(driver);
         blockPage.open();
+
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
 
         String expectedLinkText = "Подробнее о сервисе";
         String expectedHref = "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/";
@@ -57,6 +74,10 @@ public class BlockTest extends BaseTest {
     public void testContinueButton() {
         BlockPage blockPage = new BlockPage(driver);
         blockPage.open();
+
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
 
         blockPage.fillInputFields("297777777", "100");
         blockPage.clickContinueButton();

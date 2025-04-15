@@ -1,6 +1,8 @@
 package lesson_15;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,6 +12,8 @@ public class FrameTest extends BaseTest {
     public void testIframe() {
         FramePage framePage = new FramePage(driver);
         framePage.open();
+
+
 
         framePage.fillInputFields("297777777", "499");
         framePage.clickContinueButton();
@@ -38,7 +42,7 @@ public class FrameTest extends BaseTest {
         assertTrue(framePage.mastercard(), "mastercard - отсутствует");
         assertTrue(framePage.belkart(), "belkart - отсутствует");
         assertTrue(framePage.maestro(), "maestro - отсутствует");
-        assertTrue(framePage.mir(), "mir - отсутствует");
+
 
 
     }

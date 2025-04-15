@@ -1,6 +1,8 @@
 package lesson_15;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,6 +14,10 @@ public class FormTest extends BaseTest {
     public void testUslugiSvasi() {
         formPage = new FormPage(driver);
         formPage.open();
+
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
 
         // Выбираем элемент из выпадающего списка
         formPage.selectUslugiSvasi();
@@ -31,6 +37,10 @@ public class FormTest extends BaseTest {
         formPage = new FormPage(driver);
         formPage.open();
 
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
+
         // Выбираем элемент из выпадающего списка
         formPage.selectDomInet();
 
@@ -49,6 +59,10 @@ public class FormTest extends BaseTest {
         formPage = new FormPage(driver);
         formPage.open();
 
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
+
         // Выбираем элемент из выпадающего списка
         formPage.selectRassro4ka();
 
@@ -66,6 +80,10 @@ public class FormTest extends BaseTest {
     public void testZadolzenost() {
         formPage = new FormPage(driver);
         formPage.open();
+
+        // Нажать кнопку принять куки
+        WebElement acceptButton = driver.findElement(By.id("cookie-agree")); // Замените на реальный ID кнопки
+        acceptButton.click();
 
         // Выбираем элемент из выпадающего списка
         formPage.selectZadolzenost();
